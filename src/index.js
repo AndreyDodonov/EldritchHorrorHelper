@@ -6,7 +6,7 @@ import ancients from './data/ancients';
 import difficulty from './data/difficulties';
 
 /**
- * 1й этап: выбираем древнего
+ ** 1й этап: выбираем древнего
  */
 
 let choosedAncient = {};
@@ -44,7 +44,7 @@ but.addEventListener('click', () => {
 console.log(ancients);
 
 /**
-// выбираем уровень сложности и составляем колоду
+//* 2й этап  выбираем уровень сложности и составляем колоду
 */
 
 let choosedDifficulty;
@@ -152,9 +152,11 @@ const deckSort = (choosedAncient, miniDeck) => {
 
 
 /**
-// счётчик карт, отображение карт по одной из колоды
+// * 3й этап счётчик карт, отображение карт по одной из колоды
 */
 
+// TODO тображать колоды согласно карте древнего. Добавить кнопку "Заново"
 
+// TODO разделить экраны по этапам
 
 
