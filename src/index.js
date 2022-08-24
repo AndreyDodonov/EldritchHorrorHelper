@@ -37,8 +37,40 @@ ancientCard.forEach((el, idx) => {
 
 // закрываем выбор древних, открываем выбор сложности
 const but = document.querySelector('.button');
+const cell = document.querySelectorAll('.count_cell');
+let greenCardsArr = [];
+let brownCardsArr = [];
+let blueCardsArr = [];
 but.addEventListener('click', () => {
-  console.log(choosedAncient.firstStage.greenCards);
+  // очищаем значения в массивах
+  greenCardsArr = [];
+  brownCardsArr = [];
+  blueCardsArr = [];
+  // зелёные карточки
+  greenCardsArr.push(choosedAncient.firstStage.greenCards);
+  greenCardsArr.push(choosedAncient.secondStage.greenCards);
+  greenCardsArr.push(choosedAncient.thirdStage.greenCards);
+  brownCardsArr.push(choosedAncient.firstStage.brownCards);
+  brownCardsArr.push(choosedAncient.secondStage.brownCards);
+  brownCardsArr.push(choosedAncient.thirdStage.brownCards);
+  blueCardsArr.push(choosedAncient.firstStage.blueCards);
+  blueCardsArr.push(choosedAncient.secondStage.blueCards);
+  blueCardsArr.push(choosedAncient.thirdStage.blueCards);
+
+  cell.forEach((el, idx) => {
+    if (idx % 3 == 0) {
+      el.textContent = `${greenCardsArr[idx / 3]}`;
+    } else  // коричневые карточки
+      if (idx == 1 || idx == 4 || idx == 7) {
+        el.textContent = `${brownCardsArr[idx == 7 ? 2 : (idx != 1 ? idx - 3 : 0)]}`
+      }  // голубые карточки
+      else {
+        el.textContent = `${blueCardsArr[idx == 2 ? 0 : (idx == 5 ? 1 : 2)]}`
+      }
+
+  })
+  // console.log(choosedAncient.firstStage.greenCards);
+  // console.log(Object.values(choosedAncient.firstStage));
   // TODO отобразить число карточек в счётчике, скрыть выбор древних, открыть уровень сложности
 })
 console.log(ancients);
@@ -111,9 +143,9 @@ diffOkBtn.addEventListener('click', () => {
   }
 
   if (choosedDifficulty == 'normal') {
-    allDeck.forEach((el) => {       
-        miniDeck.push(el);
-        console.log(miniDeck);      
+    allDeck.forEach((el) => {
+      miniDeck.push(el);
+      console.log(miniDeck);
     })
   }
 
@@ -141,11 +173,11 @@ diffOkBtn.addEventListener('click', () => {
 
 const deckSort = (choosedAncient, miniDeck) => {
   for (let i = 0; i <= choosedAncient.firstStage.greenCards - 1; i++) {
-    
+
     miniDeck.forEach(el => {
       console.log(el);
     })
-    
+
   }
 }
 

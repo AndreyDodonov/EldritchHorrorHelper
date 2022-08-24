@@ -28,3 +28,34 @@
 .active {
   border: 2px solid red;
 }
+
+.card-counter {
+
+}
+
+.count_cell {
+  width: 30px;
+  height: 30px;
+  border: 1px solid yellow;
+  color: white;
+}
+
+.count_cell__green {
+  background-color: green;
+}
+
+.count_cell__brown {
+  background-color: rgba(130, 70, 28, 0.971);
+}
+
+.count_cell__blue {
+  background-color: rgba(34, 86, 219, 0.831);
+}
+
+.text_cell {
+  color: wheat;
+}
+
+.card-counter_row {
+  display: flex;
+}
