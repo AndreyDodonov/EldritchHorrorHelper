@@ -1,0 +1,30 @@
+.container {
+  height: 100vh;
+  background-image: url('./assets/home.png');
+}
+
+.ancients_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-width: 40%;
+  padding: 20px;
+}
+
+.ancient_card {
+  width: 200px;
+  height: 260px;
+}
+
+.btn_diff {
+
+}
+
+.deck_container {
+
+}
+
+.active {
+  border: 2px solid red;
+}

@@ -1,0 +1,32 @@
+{
+  "name": "eldritchhorrorhelper",
+  "version": "1.0.0",
+  "description": "Task for RSSchool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreyDodonov/EldritchHorrorHelper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreyDodonov/EldritchHorrorHelper/issues"
+  },
+  "homepage": "https://github.com/AndreyDodonov/EldritchHorrorHelper#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "webpack": "^5.74.0",
+    "webpack-bundle-analyzer": "^4.6.1",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.10.0",
+    "webpack-remove-empty-scripts": "^0.8.1"
+  }
+}
