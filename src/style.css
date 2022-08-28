@@ -18,7 +18,7 @@
 }
 
 .btn_diff {
- /* here will be code )) */
+  /* here will be code )) */
 }
 
 .deck_container {
@@ -29,9 +29,7 @@
   border: 2px solid red;
 }
 
-.card-counter {
-
-}
+.card-counter {}
 
 .count_cell {
   width: 30px;
@@ -58,4 +56,27 @@
 
 .card-counter_row {
   display: flex;
+}
+
+/* deck */
+
+.deck {
+  display: flex;
+}
+
+.back-deck {
+  background-size: cover;
+  height: 190px;
+  width: 130px;
+  background-image: url('./assets/mythicCardBackground.png');
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.front-deck {
+  background-size: cover;
+  height: 190px;
+  width: 130px;
+  border-radius: 10px;
+  border: 1px solid red;
 }

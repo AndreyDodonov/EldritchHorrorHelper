@@ -1,4 +1,4 @@
-import test from './modules/test';
+import recursion from './modules/test';
 import blue from './data/mythicCards/blue/index';
 import green from './data/mythicCards/green/index';
 import brown from './data/mythicCards/brown/index';
@@ -71,9 +71,9 @@ but.addEventListener('click', () => {
   })
   // console.log(choosedAncient.firstStage.greenCards);
   // console.log(Object.values(choosedAncient.firstStage));
-  // TODO отобразить число карточек в счётчике, скрыть выбор древних, открыть уровень сложности
+  // TODO скрыть выбор древних, открыть уровень сложности
 })
-console.log(ancients);
+// console.log(ancients);
 
 /**
 //* 2й этап  выбираем уровень сложности и составляем колоду
@@ -110,15 +110,23 @@ difficultyBtn.forEach((el, idx) => {
 
 const diffOkBtn = document.querySelector('#difficultyOk');
 
-let miniDeck = [];
+let miniDeck = []; // колода, сформированная согласно уровня сложности
 let allDeck = [];
-let playDeck = [];
+let playDeck = []; //? возможно не пригодится, потому что разбил на колоды по цветам
 
+// собираем все карты в один массив
 allDeck = allDeck.concat(green);
 allDeck = allDeck.concat(blue);
 allDeck = allDeck.concat(brown);
 
-// console.log(allDeck);
+let playDeck1stStage = [];
+let playDeck2ndStage = [];
+let playDeck3rdStage = [];
+
+let greenDeckArr = [];
+let blueDeckArr = [];
+let brownDeckArr = [];
+
 
 diffOkBtn.addEventListener('click', () => {
   miniDeck = [];
@@ -137,7 +145,7 @@ diffOkBtn.addEventListener('click', () => {
     allDeck.forEach((el) => {
       if (el.difficulty != 'hard') {
         miniDeck.push(el);
-        console.log(miniDeck);
+       // console.log(miniDeck);
       }
     })
   }
@@ -166,11 +174,79 @@ diffOkBtn.addEventListener('click', () => {
       }
     })
   }
+  // мини колоды по цветам
+  recursion('green', greenCardsArr, miniDeck);
+  recursion('blue', blueCardsArr, miniDeck);
+  recursion('brown', brownCardsArr, miniDeck);
+  
+  //формируем колоду согласно уровня сложности
+  //console.log(choosedAncient.firstStage.greenCards);
+
+  let randomIndex = (arr) => {
+    let randomIdx = Math.floor(Math.random() * arr.length);
+    if (arr[randomIndex] == '') {
+      randomIndex(arr)
+    }
+    return randomIdx;
+  }
+  // колода для первого стейджа
+  for (let i = 0; i < choosedAncient.firstStage.greenCards; i++) {
+    let randomIdx = randomIndex(greenCardsArr);
+    playDeck1stStage.push(greenCardsArr[randomIdx]);
+    greenCardsArr.splice(randomIdx, 1);
+  }
+  for (let i = 0; i < choosedAncient.firstStage.blueCards; i++) {
+    let randomIdx = randomIndex(blueCardsArr);
+    playDeck1stStage.push(blueCardsArr[randomIdx]);
+    blueCardsArr.splice(randomIdx, 1);
+  }
+  for (let i = 0; i < choosedAncient.firstStage.brownCards; i++) {
+    let randomIdx = randomIndex(brownCardsArr);
+    playDeck1stStage.push(brownCardsArr[randomIdx]);
+    brownCardsArr.splice(randomIdx, 1);
+  }
+  console.log(playDeck1stStage);
+
+  // колода для второго стейджа
+  for (let i = 0; i < choosedAncient.secondStage.greenCards; i++) {
+    let randomIdx = randomIndex(greenCardsArr);
+    playDeck2ndStage.push(greenCardsArr[randomIdx]);
+    greenCardsArr.splice(randomIdx, 1);
+  }
+  for (let i = 0; i < choosedAncient.secondStage.blueCards; i++) {
+    let randomIdx = randomIndex(blueCardsArr);
+    playDeck2ndStage.push(blueCardsArr[randomIdx]);
+    blueCardsArr.splice(randomIdx, 1);
+  }
+  for (let i = 0; i < choosedAncient.secondStage.brownCards; i++) {
+    let randomIdx = randomIndex(brownCardsArr);
+    playDeck2ndStage.push(brownCardsArr[randomIdx]);
+    brownCardsArr.splice(randomIdx, 1);
+  }
+  console.log(playDeck2ndStage);
+
+    // колода для третьего стейджа
+  for (let i = 0; i < choosedAncient.thirdStage.greenCards; i++) {
+    let randomIdx = randomIndex(greenCardsArr);
+    playDeck3rdStage.push(greenCardsArr[randomIdx]);
+    greenCardsArr.splice(randomIdx, 1);
+  }
+  for (let i = 0; i < choosedAncient.thirdStage.blueCards; i++) {
+    let randomIdx = randomIndex(blueCardsArr);
+    playDeck3rdStage.push(blueCardsArr[randomIdx]);
+    blueCardsArr.splice(randomIdx, 1);
+  }
+  for (let i = 0; i < choosedAncient.thirdStage.brownCards; i++) {
+    let randomIdx = randomIndex(greenCardsArr);
+    playDeck3rdStage.push(brownCardsArr[randomIdx]);
+    brownCardsArr.splice(randomIdx, 1);
+  }
+  console.log(playDeck3rdStage);
 
 })
 
 
-
+// ?непонятно - нужна ли отдельная функция сортировки или выдёргивать просто рандомом из массива
 const deckSort = (choosedAncient, miniDeck) => {
   for (let i = 0; i <= choosedAncient.firstStage.greenCards - 1; i++) {
 
@@ -180,14 +256,28 @@ const deckSort = (choosedAncient, miniDeck) => {
 
   }
 }
-
+//? --------------------------------------------------------------------------------------
 
 
 /**
 // * 3й этап счётчик карт, отображение карт по одной из колоды
 */
 
-// TODO тображать колоды согласно карте древнего. Добавить кнопку "Заново"
+const frontDeck = document.querySelector('.front-deck'); // лицевая сторона карты
+
+let showFrontDeck = () => {
+  console.log('click');
+  // показываем карты по очереди
+
+  // меняем счётчик
+
+  // меняем отображение этапа
+  
+}
+
+frontDeck.addEventListener('click', showFrontDeck)
+
+// TODO отображать колоды согласно карте древнего. Добавить кнопку "Заново"
 
 // TODO разделить экраны по этапам
 
