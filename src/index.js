@@ -13,6 +13,11 @@ import randomIndex from './modules/randomIndex';
 let choosedAncient = {};
 
 const ancientContainer = document.querySelector('.ancients_container');
+const difficultyContainer = document.querySelector('.difficulty_container');
+const deckContainer = document.querySelector('.deck_container')
+
+difficultyContainer.style.display = 'none';
+deckContainer.style.display = 'none';
 // создаём карточки древних
 for (let i = 0; i < (ancients.length); i++) {
   let image = new Image();
@@ -42,6 +47,7 @@ const cell = document.querySelectorAll('.count_cell');
 let greenCardsArr = [];
 let brownCardsArr = [];
 let blueCardsArr = [];
+let brownCardsArrNormal = [];
 but.addEventListener('click', () => {
   // очищаем значения в массивах
   greenCardsArr = [];
@@ -69,7 +75,10 @@ but.addEventListener('click', () => {
         el.textContent = `${blueCardsArr[idx == 2 ? 0 : (idx == 5 ? 1 : 2)]}`
       }
   })
-  // TODO скрыть выбор древних, открыть уровень сложности
+
+  ancientContainer.style.display = 'none';
+  difficultyContainer.style.display = 'flex';
+
 })
 
 /**
@@ -77,8 +86,6 @@ but.addEventListener('click', () => {
 */
 
 let choosedDifficulty;
-
-const difficultyContainer = document.querySelector('.difficulty_container');
 
 for (let i = 0; i < (difficulty.length); i++) {
   const btn = document.createElement('button');
@@ -119,16 +126,23 @@ let playDeck1stStage = [];
 let playDeck2ndStage = [];
 let playDeck3rdStage = [];
 
+let normalDeck = [];
+
 diffOkBtn.addEventListener('click', () => {
   miniDeck = [];
+
+  allDeck.forEach((el) => {
+    if (el.difficulty == 'normal') {
+      normalDeck.push(el);
+    }
+  })
+
   if (choosedDifficulty == 'very_easy') {
     allDeck.forEach((el) => {
       if (el.difficulty == 'easy') {
         miniDeck.push(el);
       }
-      miniDeck = miniDeck.sort(() => Math.random - 0.5);
     })
-    deckSort(choosedAncient, miniDeck);
   }
 
   if (choosedDifficulty == 'easy') {
@@ -164,6 +178,8 @@ diffOkBtn.addEventListener('click', () => {
   colorsArr('green', greenCardsArr, miniDeck);
   colorsArr('blue', blueCardsArr, miniDeck);
   colorsArr('brown', brownCardsArr, miniDeck);
+
+  colorsArr('brown', brownCardsArrNormal, normalDeck);
 
   // колода для первого стейджа
   for (let i = 0; i < choosedAncient.firstStage.greenCards; i++) {
@@ -213,11 +229,21 @@ diffOkBtn.addEventListener('click', () => {
     blueCardsArr.splice(randomIdx, 1);
   }
   for (let i = 0; i < choosedAncient.thirdStage.brownCards; i++) {
-    let randomIdx = randomIndex(greenCardsArr);
-    playDeck3rdStage.push(brownCardsArr[randomIdx]);
-    brownCardsArr.splice(randomIdx, 1);
+    let randomIdx = randomIndex(brownCardsArr);
+    if (brownCardsArr[randomIdx] == undefined) {
+      let randomIdx = randomIndex(brownCardsArrNormal);
+      playDeck3rdStage.push(brownCardsArrNormal[randomIdx]);
+    } else {
+      playDeck3rdStage.push(brownCardsArr[randomIdx]);
+      brownCardsArr.splice(randomIdx, 1);
+    }
+   
   }
+
+
   console.log(playDeck3rdStage);
+  difficultyContainer.style.display = 'none';
+  deckContainer.style.display = 'flex';
 
 })
 
