@@ -305,6 +305,7 @@ let showFrontDeck = () => {
     stageIndicator[0].style.textDecoration = 'line-through';
     stageIndicator[1].style.textDecoration = 'line-through';
     stageIndicator[2].style.textDecoration = 'line-through';
+    
     // !TODO выводить надпись "карты кончились, нажмите кнопку заново"
   }
 
@@ -321,8 +322,5 @@ reloadButton.addEventListener('click', () => {
   window.location.reload();
 })
 
-// TODO отображать колоды согласно карте древнего. Добавить кнопку "Заново"
-
-// TODO разделить экраны по этапам
 
 

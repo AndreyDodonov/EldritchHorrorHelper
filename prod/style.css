@@ -1,0 +1,82 @@
+.container {
+  height: 100vh;
+  background-image: url('./assets/home.png');
+}
+
+.ancients_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-width: 40%;
+  padding: 20px;
+}
+
+.ancient_card {
+  width: 200px;
+  height: 260px;
+}
+
+.btn_diff {
+  /* here will be code )) */
+}
+
+.deck_container {
+  /* here will be code )) */
+}
+
+.active {
+  border: 2px solid red;
+}
+
+.card-counter {}
+
+.count_cell {
+  width: 30px;
+  height: 30px;
+  border: 1px solid yellow;
+  color: white;
+}
+
+.count_cell__green {
+  background-color: green;
+}
+
+.count_cell__brown {
+  background-color: rgba(130, 70, 28, 0.971);
+}
+
+.count_cell__blue {
+  background-color: rgba(34, 86, 219, 0.831);
+}
+
+.text_cell {
+  color: wheat;
+}
+
+.card-counter_row {
+  display: flex;
+}
+
+/* deck */
+
+.deck {
+  display: flex;
+}
+
+.back-deck {
+  background-size: cover;
+  height: 407px;
+  width: 274px;
+  background-image: url('./assets/mythicCardBackground.png');
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.front-deck {
+  background-size: cover;
+  height: 407px;
+  width: 274px;
+  border-radius: 10px;
+  border: 1px solid red;
+}
