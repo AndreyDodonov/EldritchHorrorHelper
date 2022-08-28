@@ -67,7 +67,6 @@ but.addEventListener('click', () => {
       else {
         el.textContent = `${blueCardsArr[idx == 2 ? 0 : (idx == 5 ? 1 : 2)]}`
       }
-
   })
   // TODO скрыть выбор древних, открыть уровень сложности
 })
@@ -243,7 +242,14 @@ let showFrontDeck = () => {
     // показываем карты по очереди  
     let randomIdx = randomIndex(playDeck1stStage);
     frontDeck.style.background = `url(${playDeck1stStage[randomIdx].cardFace})`;
-    playDeck1stStage.splice(randomIdx, 1)
+    if (playDeck1stStage[randomIdx].color == 'green') {
+      cell[0].textContent = `${--cell[0].textContent}`
+    } else if (playDeck1stStage[randomIdx].color == 'blue') {
+      cell[2].textContent = `${--cell[2].textContent}`
+    } else if (playDeck1stStage[randomIdx].color == 'brown') {
+      cell[1].textContent = `${--cell[1].textContent}`
+    }
+    playDeck1stStage.splice(randomIdx, 1);
 
   } else if (playDeck2ndStage.length != 0) {
     stageIndicator[0].style.textDecoration = 'line-through';
@@ -251,6 +257,13 @@ let showFrontDeck = () => {
     // показываем карты по очереди  
     let randomIdx = randomIndex(playDeck2ndStage);
     frontDeck.style.background = `url(${playDeck2ndStage[randomIdx].cardFace})`;
+    if (playDeck2ndStage[randomIdx].color == 'green') {
+      cell[3].textContent = `${--cell[3].textContent}`
+    } else if (playDeck2ndStage[randomIdx].color == 'blue') {
+      cell[5].textContent = `${--cell[5].textContent}`
+    } else if (playDeck2ndStage[randomIdx].color == 'brown') {
+      cell[4].textContent = `${--cell[4].textContent}`
+    }
     playDeck2ndStage.splice(randomIdx, 1);
     // меняем счётчик
 
@@ -261,6 +274,13 @@ let showFrontDeck = () => {
     // показываем карты по очереди  
     let randomIdx = randomIndex(playDeck3rdStage);
     frontDeck.style.background = `url(${playDeck3rdStage[randomIdx].cardFace})`;
+    if (playDeck3rdStage[randomIdx].color == 'green') {
+      cell[6].textContent = `${--cell[6].textContent}`
+    } else if (playDeck3rdStage[randomIdx].color == 'blue') {
+      cell[8].textContent = `${--cell[8].textContent}`
+    } else if (playDeck3rdStage[randomIdx].color == 'brown') {
+      cell[7].textContent = `${--cell[7].textContent}`
+    }
     playDeck3rdStage.splice(randomIdx, 1);
   } else {
     stageIndicator[0].style.textDecoration = 'line-through';
