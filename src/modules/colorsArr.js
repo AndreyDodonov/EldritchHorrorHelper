@@ -6,13 +6,13 @@
  * @param {*} startArr - исходный массив
  */
 
-const recursion = (color, resArr, startArr) => {
+const colorsArr = (color, resArr, startArr) => {
   for (let item of startArr) {
     if (item.color === color){
       resArr.push(item);
     }    
   }
-  // ! вот такое вот тупое решение! Не знаю откуда бкрется первые три элемента
+  // ! вот такое вот тупое решение! Не знаю откуда берутся первые три элемента
   // ! поэтому просто удаляю их
   // !TODO fix it!
   // !TODO rename function because this is not recursion
@@ -21,4 +21,4 @@ const recursion = (color, resArr, startArr) => {
   resArr.shift();  
 }
 
-export default recursion;
+export default colorsArr;

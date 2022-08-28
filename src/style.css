@@ -66,8 +66,8 @@
 
 .back-deck {
   background-size: cover;
-  height: 190px;
-  width: 130px;
+  height: 407px;
+  width: 274px;
   background-image: url('./assets/mythicCardBackground.png');
   border-radius: 10px;
   cursor: pointer;
@@ -75,8 +75,8 @@
 
 .front-deck {
   background-size: cover;
-  height: 190px;
-  width: 130px;
+  height: 407px;
+  width: 274px;
   border-radius: 10px;
   border: 1px solid red;
 }

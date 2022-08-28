@@ -1,9 +1,10 @@
-import recursion from './modules/test';
+import colorsArr from './modules/colorsArr';
 import blue from './data/mythicCards/blue/index';
 import green from './data/mythicCards/green/index';
 import brown from './data/mythicCards/brown/index';
 import ancients from './data/ancients';
 import difficulty from './data/difficulties';
+import randomIndex from './modules/randomIndex';
 
 /**
  ** 1й этап: выбираем древнего
@@ -118,14 +119,6 @@ let playDeck1stStage = [];
 let playDeck2ndStage = [];
 let playDeck3rdStage = [];
 
-let randomIndex = (arr) => {
-  let randomIdx = Math.floor(Math.random() * arr.length);
-  if (arr[randomIndex] == '') {
-    randomIndex(arr)
-  }
-  return randomIdx;
-}
-
 diffOkBtn.addEventListener('click', () => {
   miniDeck = [];
   if (choosedDifficulty == 'very_easy') {
@@ -168,9 +161,9 @@ diffOkBtn.addEventListener('click', () => {
     })
   }
   // мини колоды по цветам
-  recursion('green', greenCardsArr, miniDeck);
-  recursion('blue', blueCardsArr, miniDeck);
-  recursion('brown', brownCardsArr, miniDeck);
+  colorsArr('green', greenCardsArr, miniDeck);
+  colorsArr('blue', blueCardsArr, miniDeck);
+  colorsArr('brown', brownCardsArr, miniDeck);
 
   // колода для первого стейджа
   for (let i = 0; i < choosedAncient.firstStage.greenCards; i++) {
@@ -241,7 +234,7 @@ let showFrontDeck = () => {
     stageIndicator[0].style.textDecoration = 'underline';
     // показываем карты по очереди  
     let randomIdx = randomIndex(playDeck1stStage);
-    frontDeck.style.background = `url(${playDeck1stStage[randomIdx].cardFace})`;
+    frontDeck.style.backgroundImage = `url(${playDeck1stStage[randomIdx].cardFace})`;
     if (playDeck1stStage[randomIdx].color == 'green') {
       cell[0].textContent = `${--cell[0].textContent}`
     } else if (playDeck1stStage[randomIdx].color == 'blue') {
@@ -256,7 +249,7 @@ let showFrontDeck = () => {
     stageIndicator[1].style.textDecoration = 'underline';
     // показываем карты по очереди  
     let randomIdx = randomIndex(playDeck2ndStage);
-    frontDeck.style.background = `url(${playDeck2ndStage[randomIdx].cardFace})`;
+    frontDeck.style.backgroundImage = `url(${playDeck2ndStage[randomIdx].cardFace})`;
     if (playDeck2ndStage[randomIdx].color == 'green') {
       cell[3].textContent = `${--cell[3].textContent}`
     } else if (playDeck2ndStage[randomIdx].color == 'blue') {
@@ -273,7 +266,7 @@ let showFrontDeck = () => {
     stageIndicator[2].style.textDecoration = 'underline';
     // показываем карты по очереди  
     let randomIdx = randomIndex(playDeck3rdStage);
-    frontDeck.style.background = `url(${playDeck3rdStage[randomIdx].cardFace})`;
+    frontDeck.style.backgroundImage = `url(${playDeck3rdStage[randomIdx].cardFace})`;
     if (playDeck3rdStage[randomIdx].color == 'green') {
       cell[6].textContent = `${--cell[6].textContent}`
     } else if (playDeck3rdStage[randomIdx].color == 'blue') {
